@@ -21,8 +21,7 @@ public:
     // Subscrive to input video feed and publish output video feed  
     image_sub_ = it_.subscribe("picture/video", 1,   
       &ImageConverter::imageCb, this);  
-   // image_pub_ = it_.advertise("/image_converter/output_video", 1);  
-  
+     
     cv::namedWindow(OPENCV_WINDOW);  
   }  
   
@@ -48,11 +47,9 @@ public:
     if (cv_ptr->image.rows > 60 && cv_ptr->image.cols > 60)  
       cv::circle(cv_ptr->image, cv::Point(50, 50), 10, CV_RGB(255,0,0));  
 	
-	cv::Mat element = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(15, 15));
+    cv::Mat element = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(15, 15));
     cv::dilate(cv_ptr->image,cv_ptr->image, 2);
- 	cv::erode(cv_ptr->image,cv_ptr->image, 3);  	
-//cv_ptr = imageprocess(cv_ptr);
-    //cv::morphologyEx(cv_ptr->image, cv_ptr->image, cv::MORPH_CLOSE, element);
+    //cv::erode(cv_ptr->image,cv_ptr->image, 3);  	
     // Update GUI Window  
     cv::imshow(OPENCV_WINDOW, cv_ptr->image);  
     cv::waitKey(3);  
@@ -60,14 +57,7 @@ public:
     // Output modified video stream  
     image_pub_.publish(cv_ptr->toImageMsg());  
   }
-/*
-    cv_bridge::CvImagePtr imageprocess(const cv_bridge::CvImagePtr cv_ptr)  
-    {
-		cv::Mat element = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(15, 15));
-    	cv::dilate(cv_ptr->image,cv_ptr->image, element);
-		return cv_ptr; 
-    }
-*/
+
 };  
   
 int main(int argc, char** argv)  
