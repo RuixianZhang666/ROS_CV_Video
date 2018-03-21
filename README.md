@@ -1,10 +1,11 @@
 # ROS_CV_Video
 
-##Porpurpose
+##Porpurpose  
 The project mainly uses ROS to compile an image processing program, using the bridge of cv_bridge  
-##Compile environment
-ubuntu 14.04  ROS-indigo  OpenCV3
-##The compiling instruct as fellows  
+##Compile environment  
+ubuntu 14.04  ROS-indigo  OpenCV3  
+##The compiling instruct as fellows    
+
 catkin_make --pkg cv_bridge  
 catkin_make  
 
