@@ -1,0 +1,2 @@
+cv_bridge:rospitviedeo
+-DCATKIN_DEVEL_PREFIX=/home/zrxlovedjl/ROS_CV_Video/devel -DCMAKE_INSTALL_PREFIX=/home/zrxlovedjl/ROS_CV_Video/install -G Unix Makefiles

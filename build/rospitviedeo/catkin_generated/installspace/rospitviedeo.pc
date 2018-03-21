@@ -1,0 +1,8 @@
+prefix=/home/zrxlovedjl/ROS_CV_Video/install
+
+Name: rospitviedeo
+Description: Description of rospitviedeo
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/zrxlovedjl/ROS_CV_Video/install/lib 
+Requires: 
