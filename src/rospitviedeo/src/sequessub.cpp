@@ -47,8 +47,12 @@ public:
     if (cv_ptr->image.rows > 60 && cv_ptr->image.cols > 60)  
       cv::circle(cv_ptr->image, cv::Point(50, 50), 10, CV_RGB(255,0,0));  
 	
-    cv::Mat element = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(15, 15));
-    cv::dilate(cv_ptr->image,cv_ptr->image, 3);
+    ImageProcess(cv_ptr);//Function 
+    //cv::Mat element = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(15, 15));
+    //cv::threshold(cv_ptr->image, cv_ptr->image, 30, 200.0,cv::CV_THRESH_BINARY);
+    //cv::GaussianBlur(cv_ptr->image,cv_ptr->image,cv::Size(3,3),0);
+    //cv::Canny(cv_ptr->image,cv_ptr->image,100,250);
+    //cv::dilate(cv_ptr->image,cv_ptr->image, 3);
     //cv::erode(cv_ptr->image,cv_ptr->image, 3);  	
     // Update GUI Window  
     cv::imshow(OPENCV_WINDOW, cv_ptr->image);  
@@ -57,7 +61,12 @@ public:
     // Output modified video stream  
     image_pub_.publish(cv_ptr->toImageMsg());  
   }
-
+    void ImageProcess(cv_bridge::CvImagePtr& cv_ptr)  
+    {
+        cv::Mat element = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(15, 15));
+    	cv::dilate(cv_ptr->image,cv_ptr->image, element);
+	cv::erode(cv_ptr->image,cv_ptr->image, element);
+    }
 };  
   
 int main(int argc, char** argv)  
